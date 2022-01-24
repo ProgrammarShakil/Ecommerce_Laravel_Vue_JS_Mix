@@ -7,11 +7,12 @@ import About from './Components/about.vue'
 Vue.use(VueRouter)
 
 const routes = [
-    { path: '/', component: Home },
+    { path: '/home', component: Home },
     { path: '/about', component: About }
   ]
   
  
   export const router = new VueRouter({
-    routes 
+    routes : routes,
+    mode: 'history'
   })

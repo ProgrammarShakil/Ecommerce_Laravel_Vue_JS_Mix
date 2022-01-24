@@ -2075,17 +2075,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Counter",
   data: function data() {
-    return {
-      counter: 0
-    };
+    return {};
   }
 });
 
@@ -2165,14 +2157,15 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]);
 var routes = [{
-  path: '/',
+  path: '/home',
   component: _Components_home_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
   path: '/about',
   component: _Components_about_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
-  routes: routes
+  routes: routes,
+  mode: 'history'
 });
 
 /***/ }),
@@ -19796,39 +19789,11 @@ var render = function () {
     "div",
     [
       _c(
-        "button",
-        {
-          staticClass: "dec-button",
-          on: {
-            click: function ($event) {
-              _vm.counter--
-            },
-          },
-        },
-        [_vm._v("-")]
-      ),
-      _vm._v("\n\t" + _vm._s(_vm.counter) + "\n\t"),
-      _c(
-        "button",
-        {
-          staticClass: "inc-button",
-          on: {
-            click: function ($event) {
-              _vm.counter++
-            },
-          },
-        },
-        [_vm._v("+")]
-      ),
-      _vm._v(" "),
-      _c("h1", [_vm._v("Hello App!")]),
-      _vm._v(" "),
-      _c(
         "p",
         [
-          _c("router-link", { attrs: { to: "/home" } }, [_vm._v("Go to Foo")]),
+          _c("router-link", { attrs: { to: "/home" } }, [_vm._v("Home")]),
           _vm._v(" "),
-          _c("router-link", { attrs: { to: "/about" } }, [_vm._v("Go to Bar")]),
+          _c("router-link", { attrs: { to: "/about" } }, [_vm._v("About")]),
         ],
         1
       ),
