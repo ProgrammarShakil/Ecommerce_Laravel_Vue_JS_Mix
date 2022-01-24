@@ -7,7 +7,7 @@ import About from './Components/about.vue'
 Vue.use(VueRouter)
 
 const routes = [
-    { path: '/home', component: Home },
+    { path: '/home-', component: Home },
     { path: '/about', component: About }
   ]
   
