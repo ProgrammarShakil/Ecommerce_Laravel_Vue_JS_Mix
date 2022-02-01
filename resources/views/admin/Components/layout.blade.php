@@ -11,6 +11,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+<section id="app-content"> <!-- app-content component id -->
     <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-dark">
@@ -38,8 +39,6 @@
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-            {{-- <i class="far fa-comments"></i> --}}
-            {{-- <span class="badge badge-danger navbar-badge">3</span> --}}
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <a href="#" class="dropdown-item">
@@ -52,7 +51,7 @@
                     <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                     </h3>
                     <p class="text-sm">Call me whenever you can...</p>
-                    {{-- <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p> --}}
+                    
                 </div>
                 </div>
                 <!-- Message End -->
@@ -131,11 +130,11 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link" style="text-decoration: none">
-        <img src="{{ asset('assets/images/AdminLTELogo.png') }}" class="brand-image img-circle elevation-3"
+        <router-link to="/home" class="brand-link" style="text-decoration: none">
+        <img src="{{ asset('assets/images/AdminLTELogo.png') }}" class="brand-image img-circle elevation-1"
                 style="opacity: .8">
-        <span class="brand-text font-weight-light">Dashboard</span>
-        </a>
+        <span class="brand-text font-weight-light"> Book Shop </span>
+        </router-link>
 
         <!-- Sidebar -->
         <div class="sidebar">
@@ -143,31 +142,24 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                    with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                    All Menu
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-                </a>
-                <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <router-link to="/home" class="nav-link">
-                    <i class="fas fa-th-large me-1"></i>
-                    <p>Categories </p>
-                </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link to="/posts" class="nav-link">
-                    <i class="fas fa-th-large me-1"></i>
-                    <p>All Posts </p>
+                    <router-link to="/home" class="nav-link text-white">
+                        <i class="fas fa-th-large me-1"></i>
+                        <p>Dashboard </p>
                     </router-link>
                 </li>
-                </ul>
-            </li>
+                <li class="nav-item">
+                    <router-link to="/categories" class="nav-link text-white">
+                        <i class="fas fa-th-large me-1"></i>
+                        <p>Categories </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/posts" class="nav-link text-white">
+                        <i class="fas fa-th-large me-1"></i>
+                        <p>All Posts </p>
+                    </router-link>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -191,9 +183,9 @@
             <div class="row justify-content-center">
             <div class="col-lg-9">
                 <!-- component -->
-                <section id="app-content">
+                
                     <router-view></router-view>
-                </section>
+                
                 <!-- /component -->
             </div>
             <!-- /.col-lg-9 -->
@@ -219,5 +211,6 @@
 
     </div>
     <script src="{{ asset("js/app.js") }}"></script>
+</section> <!-- /app-content component id -->
 </body>
 </html>

@@ -2,7 +2,7 @@
 	<div>
 		<div class="card">
 			<div class="card-body">
-			    I am from Home component.
+			    I am from manage category component.
 			</div>
 		</div>
 	</div>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-	name: "home"
+	name: "manage"
 };
 </script>
 

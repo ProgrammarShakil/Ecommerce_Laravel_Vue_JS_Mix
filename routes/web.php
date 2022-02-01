@@ -24,5 +24,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/posts', [PostController::class, 'index']);
-Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/{anypath}', [HomeController::class, 'index'])->where('path','.*');
