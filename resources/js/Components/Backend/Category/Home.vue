@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<p>
-			I am from counter component.
+			I am from Home component.
 		</p>
 		<router-view></router-view>
 	</div>

@@ -193,7 +193,7 @@
                 <div id="app">
                     <div class="card">
                         <div class="card-body">
-                            <counter></counter>
+                            <Home></Home>
                         </div>
                     </div>
                 </div>
