@@ -149,22 +149,22 @@
                 <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                    Dashboard
+                    All Menu
                     <i class="right fas fa-angle-left"></i>
                 </p>
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="./index.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v1</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="./index2.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v2</p>
-                    </a>
+                    <router-link to="/home" class="nav-link">
+                    <i class="fas fa-th-large me-1"></i>
+                    <p>Categories </p>
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/posts" class="nav-link">
+                    <i class="fas fa-th-large me-1"></i>
+                    <p>All Posts </p>
+                    </router-link>
                 </li>
                 </ul>
             </li>
@@ -190,13 +190,11 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
             <div class="col-lg-9">
-                <div id="app">
-                    <div class="card">
-                        <div class="card-body">
-                            <Home></Home>
-                        </div>
-                    </div>
-                </div>
+                <!-- component -->
+                <section id="app-content">
+                    <router-view></router-view>
+                </section>
+                <!-- /component -->
             </div>
             <!-- /.col-lg-9 -->
             </div>

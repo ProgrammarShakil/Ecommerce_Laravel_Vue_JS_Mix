@@ -1,18 +1,16 @@
 <template>
 	<div>
-		<p>
-			I am from Home component.
-		</p>
+		<div class="card">
+			<div class="card-body">
+			    I am from Home component.
+			</div>
+		</div>
 		<router-view></router-view>
 	</div>
 </template>
 
 <script>
 export default {
-	data() {
-		return {
-			
-		};
-	},
+	name: "home"
 };
 </script>
