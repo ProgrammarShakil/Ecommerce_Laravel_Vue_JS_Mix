@@ -7780,7 +7780,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {};
@@ -30579,15 +30578,7 @@ var render = function () {
   return _c(
     "div",
     [
-      _c(
-        "p",
-        [
-          _c("router-link", { attrs: { to: "/home" } }, [_vm._v("Home")]),
-          _vm._v(" "),
-          _c("router-link", { attrs: { to: "/about" } }, [_vm._v("About")]),
-        ],
-        1
-      ),
+      _c("p", [_vm._v("\n\t\tI am from counter component.\n\t")]),
       _vm._v(" "),
       _c("router-view"),
     ],

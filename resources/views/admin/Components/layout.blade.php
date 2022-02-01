@@ -13,17 +13,11 @@
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-dark">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
         </li>
         </ul>
 
@@ -44,8 +38,8 @@
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
+            {{-- <i class="far fa-comments"></i> --}}
+            {{-- <span class="badge badge-danger navbar-badge">3</span> --}}
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <a href="#" class="dropdown-item">
@@ -58,7 +52,7 @@
                     <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                     </h3>
                     <p class="text-sm">Call me whenever you can...</p>
-                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                    {{-- <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p> --}}
                 </div>
                 </div>
                 <!-- Message End -->
@@ -103,7 +97,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
+            {{-- <span class="badge badge-warning navbar-badge">15</span> --}}
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header">15 Notifications</span>
@@ -174,14 +168,6 @@
                 </li>
                 </ul>
             </li>
-
-            {{-- <li class="nav-header">MISCELLANEOUS</li> --}}
-            {{-- <li class="nav-item">
-                <a href="https://adminlte.io/docs/3.0" class="nav-link">
-                <i class="nav-icon fas fa-file"></i>
-                <p>Documentation</p>
-                </a>
-            </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -194,17 +180,7 @@
         <!-- Content Header (Page header) -->
         <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Dashboard v3</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </div><!-- /.col -->
-            </div><!-- /.row -->
+
         </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
@@ -212,13 +188,17 @@
         <!-- Main content -->
         <div class="content">
         <div class="container-fluid">
-            <div class="row">
-            <div class="col-lg-6">
+            <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div id="app">
+                    <div class="card">
+                        <div class="card-body">
+                            <counter></counter>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- /.col-md-6 -->
-            <div class="col-lg-6">
-            </div>
-            <!-- /.col-md-6 -->
+            <!-- /.col-lg-9 -->
             </div>
             <!-- /.row -->
         </div>
@@ -236,7 +216,7 @@
 
     <!-- Main Footer -->
     <footer class="main-footer">
-
+        
     </footer>
 
     </div>

@@ -1,8 +1,7 @@
 <template>
 	<div>
 		<p>
-			<router-link to="/home">Home</router-link>
-			<router-link to="/about">About</router-link>
+			I am from counter component.
 		</p>
 		<router-view></router-view>
 	</div>
