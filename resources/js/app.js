@@ -4,15 +4,19 @@ require('./bootstrap');
 // Vue JS
 window.Vue = require('vue').default;
 
-
 // V Form
+window.Form = Form;
+
 import Form from 'vform'
 import { HasError, AlertError } from 'vform/src/components/bootstrap5'
   
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
-window.Form = Form;
+// import toastr js
+window.toastr = toastr
+
+import toastr from 'toastr'
 
 // Vue Router
 import {router} from './router'

@@ -47,7 +47,9 @@
 
 <script>
 export default {
+
 	name: "create-category",
+
 	data(){
 		return{
 			form: new Form({
@@ -57,10 +59,17 @@ export default {
 			})
 		}
 	},
+
 	methods:{
+
 		addCategory() {
-			this.form.post('/add-category').then(({ data }) => {
-				console.log(data)
+
+			this.form.post('/add-category').then(() => {
+
+				toastr.success('Category Added Successfully');
+
+				this.form.name = null
+
 			})
 		}
 	}
