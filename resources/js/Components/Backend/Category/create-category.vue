@@ -7,7 +7,7 @@
 				    <h4 class="card-title">Categories</h4>
 				</div>
 				<div class="col-6 text-end">
-					<router-link to="/add-category" class="btn btn-success btn-sm text-end"> Add Catagory </router-link>
+					<router-link to="/categories" class="btn btn-success btn-sm text-end"> Back </router-link>
 				</div>
 			</div>
 			</div>
@@ -35,7 +35,7 @@
 
 <script>
 export default {
-	name: "manage"
+	name: "create-category"
 };
 </script>
 
