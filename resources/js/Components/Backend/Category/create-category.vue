@@ -17,16 +17,18 @@
 						<div class="mb-3">
 							<label for="add-cat" class="form-label"></label>
 							<input type="text" class="form-control" v-model="form.name" id="add-cat" placeholder="" name="add-cat">
+							<HasError :form="form" field="name" />
 						</div>
 						<div class="clearfix">
 							<div class="form-check float-left">
-								<input type="radio" class="form-check-input" v-model="form.status" id="Active" name="Active" value="1">
+								<input :class="{'is-invalid' : form.errors.has('name')}" type="radio" class="form-check-input" v-model="form.status" id="Active" name="Active" value="1">
 								<label class="form-check-label text-success" for="Active">Active</label>
 							</div>
 							<div class="form-check float-right">
 								<input type="radio" class="form-check-input" v-model="form.status" name="Inactive" id="Inactive" value="0">
 								<label for="Inactive" class="form-check-label text-danger">Pause</label>
 							</div>							
+							<HasError :form="form" field="status" />
 						</div>
 					   <div class="row mt-3">
 							<div class="col-6">

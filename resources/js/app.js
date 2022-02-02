@@ -7,6 +7,10 @@ window.Vue = require('vue').default;
 
 // V Form
 import Form from 'vform'
+import { HasError, AlertError } from 'vform/src/components/bootstrap5'
+  
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
 
 window.Form = Form;
 
