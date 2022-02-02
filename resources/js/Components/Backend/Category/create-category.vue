@@ -57,8 +57,8 @@ export default {
 	},
 	methods:{
 		addCategory() {
-			this.form.post('/add-category').then((data)=>{
-				console.log(data);
+			this.form.post('/add-category').then(({ data }) => {
+				console.log(data)
 			})
 		}
 	}

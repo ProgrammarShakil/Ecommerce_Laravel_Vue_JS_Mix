@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\CategoryController;
 
 /*
@@ -26,4 +25,4 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/{anypath}', [HomeController::class, 'index'])->where('path','.*');
 
-Route::get('/add-category', [CategoryControll::class, 'store'])->name('add-category');
+Route::post('/add-category', [CategoryController::class, 'store'])->name('add-category');
