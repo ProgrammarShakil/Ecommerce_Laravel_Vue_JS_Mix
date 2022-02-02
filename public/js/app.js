@@ -7824,16 +7824,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "create-category",
   data: function data() {
     return {
       form: new Form({
-        name: null,
+        name: '',
         status: 1,
         busy: false
       })
     };
+  },
+  methods: {
+    addCategory: function addCategory() {
+      this.form.post('/add-category').then(function (data) {
+        console.log(data);
+      });
+    }
   }
 });
 
@@ -7850,6 +7876,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -7914,9 +7942,8 @@ window.Form = vform__WEBPACK_IMPORTED_MODULE_0__["default"]; // Vue Router
 
 Vue.component('Home', (__webpack_require__(/*! ./Components/Backend/Category/Home.vue */ "./resources/js/Components/Backend/Category/Home.vue")["default"]));
 var app = new Vue({
-  el: '#app-content',
   router: _router__WEBPACK_IMPORTED_MODULE_1__.router
-});
+}).$mount('#app-content');
 
 /***/ }),
 
@@ -30736,40 +30763,164 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header" }, [
-        _c("div", { staticClass: "row" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-6 text-end" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-success btn-sm text-end",
-                  attrs: { to: "/categories" },
-                },
-                [_vm._v(" Back ")]
-              ),
-            ],
-            1
-          ),
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "card col-md-6" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("div", { staticClass: "row" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-6 text-end" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-success btn-sm text-end",
+                    attrs: { to: "/categories" },
+                  },
+                  [_vm._v(" Back ")]
+                ),
+              ],
+              1
+            ),
+          ]),
         ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("form", { attrs: { action: "" } }, [
-          _vm._m(1),
-          _vm._v(" "),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
           _c(
-            "button",
+            "form",
             {
-              staticClass: "btn btn-primary",
-              attrs: { type: "submit", disabled: _vm.form.busy },
+              attrs: { action: "" },
+              on: {
+                submit: function ($event) {
+                  $event.preventDefault()
+                  return _vm.addCategory.apply(null, arguments)
+                },
+              },
             },
-            [_vm._v(" Add ")]
+            [
+              _c("div", { staticClass: "mb-3" }, [
+                _c("label", {
+                  staticClass: "form-label",
+                  attrs: { for: "add-cat" },
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.name,
+                      expression: "form.name",
+                    },
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "add-cat",
+                    placeholder: "",
+                    name: "add-cat",
+                  },
+                  domProps: { value: _vm.form.name },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "name", $event.target.value)
+                    },
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "clearfix" }, [
+                _c("div", { staticClass: "form-check float-left" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.status,
+                        expression: "form.status",
+                      },
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      id: "Active",
+                      name: "Active",
+                      value: "1",
+                    },
+                    domProps: { checked: _vm._q(_vm.form.status, "1") },
+                    on: {
+                      change: function ($event) {
+                        return _vm.$set(_vm.form, "status", "1")
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-check-label text-success",
+                      attrs: { for: "Active" },
+                    },
+                    [_vm._v("Active")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-check float-right" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.status,
+                        expression: "form.status",
+                      },
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      name: "Inactive",
+                      id: "Inactive",
+                      value: "0",
+                    },
+                    domProps: { checked: _vm._q(_vm.form.status, "0") },
+                    on: {
+                      change: function ($event) {
+                        return _vm.$set(_vm.form, "status", "0")
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-check-label text-danger",
+                      attrs: { for: "Inactive" },
+                    },
+                    [_vm._v("Pause")]
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mt-3" }, [
+                _c("div", { staticClass: "col-6" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-sm",
+                      attrs: { type: "submit", disabled: _vm.form.busy },
+                    },
+                    [_vm._v(" Add ")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+              ]),
+            ]
           ),
         ]),
       ]),
@@ -30782,25 +30933,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-6" }, [
-      _c("h4", { staticClass: "card-title" }, [_vm._v(" Add New Category")]),
+      _c("h4", { staticClass: "card-title pt-2" }, [
+        _vm._v(" Add New Category"),
+      ]),
     ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-3" }, [
-      _c("label", { staticClass: "form-label", attrs: { for: "add-cat" } }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "text",
-          id: "add-cat",
-          placeholder: "",
-          name: "add-cat",
-        },
-      }),
+    return _c("div", { staticClass: "col-6 text-end" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-danger btn-sm", attrs: { type: "reset" } },
+        [_vm._v(" Cancel ")]
+      ),
     ])
   },
 ]
@@ -30827,30 +30974,32 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header" }, [
-        _c("div", { staticClass: "row" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-6 text-end" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-success btn-sm text-end",
-                  attrs: { to: "/add-category" },
-                },
-                [_vm._v(" Add Catagory ")]
-              ),
-            ],
-            1
-          ),
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "card col-md-9" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("div", { staticClass: "row" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-6 text-end" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-success btn-sm text-end",
+                    attrs: { to: "/add-category" },
+                  },
+                  [_vm._v(" Add Catagory ")]
+                ),
+              ],
+              1
+            ),
+          ]),
         ]),
+        _vm._v(" "),
+        _vm._m(1),
       ]),
-      _vm._v(" "),
-      _vm._m(1),
     ]),
   ])
 }

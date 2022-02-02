@@ -25,3 +25,5 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/{anypath}', [HomeController::class, 'index'])->where('path','.*');
+
+Route::get('/add-category', [CategoryControll::class, 'store'])->name('add-category');

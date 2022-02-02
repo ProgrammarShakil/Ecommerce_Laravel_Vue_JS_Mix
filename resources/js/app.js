@@ -18,6 +18,5 @@ Vue.component('Home', require('./Components/Backend/Category/Home.vue').default)
 
 
 const app = new Vue({
-    el: '#app-content',
     router
-});
+}).$mount('#app-content');

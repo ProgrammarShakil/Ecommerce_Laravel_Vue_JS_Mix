@@ -38,7 +38,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'   => 'required',
+            'status' => 'required',
+        ]);
     }
 
     /**
@@ -62,7 +65,7 @@ class CategoryController extends Controller
     {
         //
     }
-
+ 
     /**
      * Update the specified resource in storage.
      *
