@@ -26,10 +26,13 @@
 							<td>dfsaff</td>
 							<td>Dooley</td>
 							<td>july@exampl</td>
+							{{something}}
 						</tr> 
 						</tbody>
 					</table>
+					
 			    </div> <!-- /card-body -->
+			    
 		   </div> <!-- /card -->
 		</div>
 	</div>
@@ -38,6 +41,11 @@
 <script>
 export default {
 	name: "manage",
+	computed: {
+		something(){
+			return this.$store.getters.test;
+		}
+	}
 };
 </script>
 

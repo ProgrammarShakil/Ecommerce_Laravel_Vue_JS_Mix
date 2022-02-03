@@ -7918,8 +7918,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "manage"
+  name: "manage",
+  computed: {
+    something: function something() {
+      return this.$store.getters.test;
+    }
+  }
 });
 
 /***/ }),
@@ -7937,7 +7945,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   state: {
-    count: 0
+    count: 25
+  },
+  getters: {
+    test: function test(state) {
+      return state.count;
+    }
   },
   mutations: {
     increment: function increment(state) {
@@ -43386,7 +43399,24 @@ var render = function () {
           ]),
         ]),
         _vm._v(" "),
-        _vm._m(1),
+        _c("div", { staticClass: "card-body" }, [
+          _c("table", { staticClass: "table" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", { staticClass: "table-info" }, [
+                _c("td", [_vm._v("dfsaff")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Dooley")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("july@exampl")]),
+                _vm._v(
+                  "\n\t\t\t\t\t\t" + _vm._s(_vm.something) + "\n\t\t\t\t\t"
+                ),
+              ]),
+            ]),
+          ]),
+        ]),
       ]),
     ]),
   ])
@@ -43404,27 +43434,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("table", { staticClass: "table" }, [
-        _c("thead", [
-          _c("tr", [
-            _c("th", [_vm._v("Name")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Status")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Action")]),
-          ]),
-        ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Name")]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", { staticClass: "table-info" }, [
-            _c("td", [_vm._v("dfsaff")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Dooley")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("july@exampl")]),
-          ]),
-        ]),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")]),
       ]),
     ])
   },
