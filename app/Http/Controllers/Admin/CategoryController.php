@@ -17,7 +17,9 @@ class CategoryController extends Controller
     {
         $categories = Category::with('posts')->get();
 
-        return $categories;
+        return response()->json([
+            'categories' => $categories,
+        ], 200) ;
     }
 
     /**

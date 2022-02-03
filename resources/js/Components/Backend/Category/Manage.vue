@@ -26,7 +26,7 @@
 							<td>dfsaff</td>
 							<td>Dooley</td>
 							<td>july@exampl</td>
-							{{something}}
+							{{categories}}
 						</tr> 
 						</tbody>
 					</table>
@@ -41,9 +41,12 @@
 <script>
 export default {
 	name: "manage",
+	mounted() {
+		this.$store.dispatch('getCategories');
+	},
 	computed: {
-		something(){
-			return this.$store.getters.test;
+		categories(){
+			return this.$store.getters.catPass;
 		}
 	}
 };

@@ -1,19 +1,27 @@
 export default {
 
     state: {
-        count: 25
+        categoryData: []
     },
 
-    getters:{
-        test (state){
-            return state.count
+    getters: {
+        catPass (state) {
+            return state.categoryData
         }
 
     },
 
+    actions: {
+        getCategories () {
+            axios.get("").then( () => {
+
+            }).catch( () => {
+                
+            })
+        }
+    },
+
     mutations: {
-         increment (state) {
-            state.count++;
-       }
+
     },
 }

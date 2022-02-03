@@ -7923,9 +7923,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "manage",
+  mounted: function mounted() {
+    this.$store.dispatch('getCategories');
+  },
   computed: {
-    something: function something() {
-      return this.$store.getters.test;
+    categories: function categories() {
+      return this.$store.getters.catPass;
     }
   }
 });
@@ -7945,18 +7948,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   state: {
-    count: 25
+    categoryData: []
   },
   getters: {
-    test: function test(state) {
-      return state.count;
+    catPass: function catPass(state) {
+      return state.categoryData;
     }
   },
-  mutations: {
-    increment: function increment(state) {
-      state.count++;
+  actions: {
+    getCategories: function getCategories() {
+      axios.get("").then(function () {})["catch"](function () {});
     }
-  }
+  },
+  mutations: {}
 });
 
 /***/ }),
@@ -43411,7 +43415,7 @@ var render = function () {
                 _vm._v(" "),
                 _c("td", [_vm._v("july@exampl")]),
                 _vm._v(
-                  "\n\t\t\t\t\t\t" + _vm._s(_vm.something) + "\n\t\t\t\t\t"
+                  "\n\t\t\t\t\t\t" + _vm._s(_vm.categories) + "\n\t\t\t\t\t"
                 ),
               ]),
             ]),
