@@ -14,21 +14,30 @@
 			    </div> <!-- /card-header -->
 			    <div class="card-body">
 					<table class="table">
+
 						<thead>
-						<tr>
-							<th>Name</th>
-							<th>Status</th>
-							<th>Action</th>
-						</tr>
+							<tr>
+								<th>Name</th>
+								<th>Status</th>
+								<th>Action</th>
+							</tr>
 						</thead>
+
 						<tbody>    
-						<tr class="table-info">
-							<td>dfsaff</td>
-							<td>Dooley</td>
-							<td>july@exampl</td>
-							{{categories}}
-						</tr> 
+							<tr v-for="category in categories" :key="category">
+								<td>{{category.name}}</td>
+								<td>
+								   <p v-if="category.status == 1">
+								       Pause
+								   </p>
+								   <p v-else-if="category.status == 0">
+								       Active
+								   </p>
+								</td>
+								<td> Edit / Delete</td>
+							</tr> 
 						</tbody>
+
 					</table>
 					
 			    </div> <!-- /card-body -->

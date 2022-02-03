@@ -12,9 +12,9 @@ export default {
     },
 
     actions: {
-        getCategories () {
+        getCategories (data) {
             axios.get("get-categories").then( (response) => {
-                console.log(response.data.categories);
+                data.commit('getCat', response.data.categories);
 
             }).catch( (error) => {
                 console.log(error);
@@ -23,6 +23,8 @@ export default {
     },
 
     mutations: {
-
+        getCat(state, data){
+            return state.categoryData = data
+        }
     },
 }

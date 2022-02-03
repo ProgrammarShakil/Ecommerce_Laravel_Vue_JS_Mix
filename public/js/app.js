@@ -7921,6 +7921,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "manage",
   mounted: function mounted() {
@@ -7956,15 +7965,19 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   actions: {
-    getCategories: function getCategories() {
+    getCategories: function getCategories(data) {
       axios.get("get-categories").then(function (response) {
-        console.log(response.data.categories);
+        data.commit('getCat', response.data.categories);
       })["catch"](function (error) {
         console.log(error);
       });
     }
   },
-  mutations: {}
+  mutations: {
+    getCat: function getCat(state, data) {
+      return state.categoryData = data;
+    }
+  }
 });
 
 /***/ }),
@@ -43411,18 +43424,33 @@ var render = function () {
           _c("table", { staticClass: "table" }, [
             _vm._m(1),
             _vm._v(" "),
-            _c("tbody", [
-              _c("tr", { staticClass: "table-info" }, [
-                _c("td", [_vm._v("dfsaff")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Dooley")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("july@exampl")]),
-                _vm._v(
-                  "\n\t\t\t\t\t\t" + _vm._s(_vm.categories) + "\n\t\t\t\t\t"
-                ),
-              ]),
-            ]),
+            _c(
+              "tbody",
+              _vm._l(_vm.categories, function (category) {
+                return _c("tr", { key: category }, [
+                  _c("td", [_vm._v(_vm._s(category.name))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    category.status == 1
+                      ? _c("p", [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t       Pause\n\t\t\t\t\t\t\t   "
+                          ),
+                        ])
+                      : category.status == 0
+                      ? _c("p", [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t       Active\n\t\t\t\t\t\t\t   "
+                          ),
+                        ])
+                      : _vm._e(),
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(" Edit / Delete")]),
+                ])
+              }),
+              0
+            ),
           ]),
         ]),
       ]),
