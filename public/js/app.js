@@ -7957,7 +7957,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   actions: {
     getCategories: function getCategories() {
-      axios.get("").then(function () {})["catch"](function () {});
+      axios.get("get-categories").then(function (response) {
+        console.log(response.data.categories);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   mutations: {}
@@ -8083,8 +8087,8 @@ var routes = [{
   component: _Components_Backend_Category_create_category_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]({
-  routes: routes,
-  mode: 'history'
+  routes: routes // mode: 'history'
+
 });
 
 /***/ }),

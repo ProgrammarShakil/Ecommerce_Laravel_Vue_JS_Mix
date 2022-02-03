@@ -13,10 +13,11 @@ export default {
 
     actions: {
         getCategories () {
-            axios.get("").then( () => {
+            axios.get("get-categories").then( (response) => {
+                console.log(response.data.categories);
 
-            }).catch( () => {
-                
+            }).catch( (error) => {
+                console.log(error);
             })
         }
     },
