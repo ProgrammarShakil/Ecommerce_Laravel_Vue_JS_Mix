@@ -66,7 +66,8 @@ export default {
 
 			this.form.post('/add-category').then(() => {
 
-				toastr.success('Category Added Successfully');
+				// toastr.success('Category Added Successfully');
+				Toast.fire({icon: 'success', title: 'Category Added Successfully'})
 
 				this.form.name = null
 
