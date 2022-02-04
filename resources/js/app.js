@@ -43,7 +43,7 @@ window.swal = swal;
 // moment js
 import moment from 'moment'
 Vue.filter('time', (value) => {
-  return moment(value).format('MMMM Do YYYY, h:mm:ss a');
+  return moment(value).format('MMM Do YY, h:mm:ss a');
 });
 
 

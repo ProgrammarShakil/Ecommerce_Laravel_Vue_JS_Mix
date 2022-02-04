@@ -8091,7 +8091,7 @@ window.swal = swal; // moment js
 
 
 Vue.filter('time', function (value) {
-  return moment__WEBPACK_IMPORTED_MODULE_7___default()(value).format('MMMM Do YYYY, h:mm:ss a');
+  return moment__WEBPACK_IMPORTED_MODULE_7___default()(value).format('MMM Do YY, h:mm:ss a');
 }); // Vue Component Register
 
 Vue.component('Home', (__webpack_require__(/*! ./Components/Backend/Category/Home.vue */ "./resources/js/Components/Backend/Category/Home.vue")["default"]));
@@ -68203,7 +68203,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "bg-primary rounded-3" }, [
+    return _c("thead", { staticClass: "bg-primary" }, [
       _c("tr", [
         _c("th", [_vm._v("SL No.")]),
         _vm._v(" "),
