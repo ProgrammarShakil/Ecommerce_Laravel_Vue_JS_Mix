@@ -25,7 +25,7 @@
 							</tr>
 						</thead>
 
-						<tbody>    
+						<tbody class="text-center">    
 							<tr v-for="(category , index) in categories" :key="category.name">
 								<td>{{ index + 1 }}</td>
 								<td>{{category.name}}</td>
@@ -43,7 +43,12 @@
 									<button type="button" class="btn btn-danger btn-sm">Edit</button>
 									<button @click="removeStatus(category.id)" type="button" class="btn btn-danger btn-sm">Delete</button>
 								</td>
-							</tr> 
+							</tr>
+							<tr v-if="ifDidntGetData()">
+							    <td colspan="6">
+								    <h3 class="text-danger text-center">Data not found</h3>
+								</td>
+							</tr>
 						</tbody>
 
 					</table>
@@ -85,7 +90,11 @@ export default {
             }).catch( (error) => {
                 console.log(error);
             })
-		}   
+		},
+
+		ifDidntGetData(){
+			return (this.categories.length < 1);
+		}
 	}
 }
 </script>

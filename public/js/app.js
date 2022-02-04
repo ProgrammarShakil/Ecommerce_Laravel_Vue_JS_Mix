@@ -7938,6 +7938,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "manage",
   mounted: function mounted() {
@@ -7962,10 +7967,14 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("remove-category/" + id).then(function (response) {
         toastr.success("Category Deleted Successfully");
 
-        _this.$store.dispatch('getCategories');
+        _this.$store.dispatch('getCategories'); // after delete fetch data
+
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    ifDidntGetData: function ifDidntGetData() {
+      return this.categories.length < 1;
     }
   }
 });
@@ -43454,57 +43463,62 @@ var render = function () {
             _vm._v(" "),
             _c(
               "tbody",
-              _vm._l(_vm.categories, function (category, index) {
-                return _c("tr", { key: category.name }, [
-                  _c("td", [_vm._v(_vm._s(index + 1))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(category.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(category.slug))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    category.status == 1
-                      ? _c("p", { class: _vm.statusColor(category.status) }, [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t       Active\n\t\t\t\t\t\t\t   "
-                          ),
-                        ])
-                      : category.status == 0
-                      ? _c("p", { class: _vm.statusColor(category.status) }, [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t       Pause\n\t\t\t\t\t\t\t   "
-                          ),
-                        ])
-                      : _vm._e(),
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger btn-sm",
-                        attrs: { type: "button" },
-                      },
-                      [_vm._v("Edit")]
-                    ),
+              { staticClass: "text-center" },
+              [
+                _vm._l(_vm.categories, function (category, index) {
+                  return _c("tr", { key: category.name }, [
+                    _c("td", [_vm._v(_vm._s(index + 1))]),
                     _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger btn-sm",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function ($event) {
-                            return _vm.removeStatus(category.id)
+                    _c("td", [_vm._v(_vm._s(category.name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(category.slug))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      category.status == 1
+                        ? _c("p", { class: _vm.statusColor(category.status) }, [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t       Active\n\t\t\t\t\t\t\t   "
+                            ),
+                          ])
+                        : category.status == 0
+                        ? _c("p", { class: _vm.statusColor(category.status) }, [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t       Pause\n\t\t\t\t\t\t\t   "
+                            ),
+                          ])
+                        : _vm._e(),
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger btn-sm",
+                          attrs: { type: "button" },
+                        },
+                        [_vm._v("Edit")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger btn-sm",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function ($event) {
+                              return _vm.removeStatus(category.id)
+                            },
                           },
                         },
-                      },
-                      [_vm._v("Delete")]
-                    ),
-                  ]),
-                ])
-              }),
-              0
+                        [_vm._v("Delete")]
+                      ),
+                    ]),
+                  ])
+                }),
+                _vm._v(" "),
+                _vm.ifDidntGetData() ? _c("tr", [_vm._m(2)]) : _vm._e(),
+              ],
+              2
             ),
           ]),
         ]),
@@ -43536,6 +43550,16 @@ var staticRenderFns = [
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { colspan: "6" } }, [
+      _c("h3", { staticClass: "text-danger text-center" }, [
+        _vm._v("Data not found"),
       ]),
     ])
   },
