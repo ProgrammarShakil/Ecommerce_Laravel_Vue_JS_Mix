@@ -13,23 +13,25 @@
 					</div>
 			    </div> <!-- /card-header -->
 			    <div class="card-body">
-					<table class="table">
+					<table class="table text-center">
 
-						<thead>
+						<thead class="bg-primary">
 							<tr>
 								<th>SL No.</th>
 								<th>Name</th>
 								<th>Slug</th>
+								<th>Time</th>
 								<th>Status</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 
-						<tbody class="text-center">    
+						<tbody>    
 							<tr v-for="(category , index) in categories" :key="category.name">
 								<td>{{ index + 1 }}</td>
-								<td>{{category.name}}</td>
-								<td>{{category.slug}}</td>
+								<td>{{ category.name }}</td>
+								<td>{{ category.slug }}</td>
+								<td> {{ category.created_at | time }}</td>
 								<td>
 								   <p v-if="category.status == 1" :class="statusColor(category.status)">
 								       Active
@@ -40,7 +42,7 @@
 								  
 								</td>
 								<td> 
-									<button type="button" class="btn btn-danger btn-sm">Edit</button>
+									<button type="button" class="btn btn-info btn-sm">Edit</button>
 									<button @click="removeStatus(category.id)" type="button" class="btn btn-danger btn-sm">Delete</button>
 								</td>
 							</tr>

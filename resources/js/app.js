@@ -40,6 +40,13 @@ const swal = Swal.mixin({
 
 window.swal = swal;
 
+// moment js
+import moment from 'moment'
+Vue.filter('time', (value) => {
+  return moment(value).format('MMMM Do YYYY, h:mm:ss a');
+});
+
+
 // Vue Component Register
 Vue.component('Home', require('./Components/Backend/Category/Home.vue').default);
 
