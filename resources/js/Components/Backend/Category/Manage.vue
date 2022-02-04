@@ -41,8 +41,9 @@
 								   </p>
 								  
 								</td>
-								<td> 
-									<button type="button" class="btn btn-info btn-sm">Edit</button>
+								<td>
+									<router-link :to=" `/edit-category/${category.id}` " class="btn btn-info btn-sm">Edit</router-link>
+
 									<button @click="removeStatus(category.id)" type="button" class="btn btn-danger btn-sm">Delete</button>
 								</td>
 							</tr>

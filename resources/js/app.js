@@ -10,11 +10,11 @@ import StoreData from './Store/store'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store(StoreData)
+const store = new Vuex.Store(StoreData) 
   
 
 // V Form
-window.Form = Form;
+window.Form = Form; 
 
 import Form from 'vform'
 import { HasError, AlertError } from 'vform/src/components/bootstrap5'
@@ -45,7 +45,6 @@ import moment from 'moment'
 Vue.filter('time', (value) => {
   return moment(value).format('MMM Do YY, h:mm:ss a');
 });
-
 
 // Vue Component Register
 Vue.component('Home', require('./Components/Backend/Category/Home.vue').default);
