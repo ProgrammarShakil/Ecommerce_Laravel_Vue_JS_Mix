@@ -17,24 +17,32 @@
 
 						<thead>
 							<tr>
+								<th>SL No.</th>
 								<th>Name</th>
+								<th>Slug</th>
 								<th>Status</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 
 						<tbody>    
-							<tr v-for="category in categories" :key="category">
+							<tr v-for="(category , index) in categories" :key="category.name">
+								<td>{{ index + 1 }}</td>
 								<td>{{category.name}}</td>
+								<td>{{category.slug}}</td>
 								<td>
-								   <p v-if="category.status == 1">
-								       Pause
-								   </p>
-								   <p v-else-if="category.status == 0">
+								   <p v-if="category.status == 1" :class="statusColor(category.status)">
 								       Active
 								   </p>
+								   <p v-else-if="category.status == 0" :class="statusColor(category.status)">
+								       Pause
+								   </p>
+								  
 								</td>
-								<td> Edit / Delete</td>
+								<td> 
+									<button type="button" class="btn btn-danger btn-sm">Edit</button>
+									<button @click="removeStatus(category.id)" type="button" class="btn btn-danger btn-sm">Delete</button>
+								</td>
 							</tr> 
 						</tbody>
 
@@ -49,16 +57,36 @@
 
 <script>
 export default {
+
 	name: "manage",
+
 	mounted() {
 		this.$store.dispatch('getCategories');
 	},
+
 	computed: {
 		categories(){
 			return this.$store.getters.catPass;
 		}
+	},
+
+	methods: {
+
+		statusColor(status){
+			let data = {1: 'text-success', 0: 'text-warning'}
+			return data[status]; // return 0 or 1
+		},
+
+		removeStatus(id){
+			axios.get("remove-category/" + id).then( (response) => {
+                toastr.success(response.data);
+
+            }).catch( (error) => {
+                console.log(error);
+            })
+		}   
 	}
-};
+}
 </script>
 
 <style scoped>

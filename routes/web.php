@@ -26,4 +26,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Route::get('/{anypath}', [HomeController::class, 'index'])->where('path','.*');
 
 Route::post('/add-category', [CategoryController::class, 'store'])->name('add-category');
+Route::get('remove-category/{id}', [CategoryController::class, 'destroy']);
+
 Route::get('/get-categories', [CategoryController::class, 'index']);

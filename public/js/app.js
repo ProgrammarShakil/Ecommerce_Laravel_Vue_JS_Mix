@@ -7930,6 +7930,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "manage",
   mounted: function mounted() {
@@ -7938,6 +7946,22 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     categories: function categories() {
       return this.$store.getters.catPass;
+    }
+  },
+  methods: {
+    statusColor: function statusColor(status) {
+      var data = {
+        1: 'text-success',
+        0: 'text-warning'
+      };
+      return data[status]; // return 0 or 1
+    },
+    removeStatus: function removeStatus(id) {
+      axios.get("remove-category/" + id).then(function (response) {
+        toastr.success(response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   }
 });
@@ -43426,27 +43450,54 @@ var render = function () {
             _vm._v(" "),
             _c(
               "tbody",
-              _vm._l(_vm.categories, function (category) {
-                return _c("tr", { key: category }, [
+              _vm._l(_vm.categories, function (category, index) {
+                return _c("tr", { key: category.name }, [
+                  _c("td", [_vm._v(_vm._s(index + 1))]),
+                  _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(category.name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(category.slug))]),
                   _vm._v(" "),
                   _c("td", [
                     category.status == 1
-                      ? _c("p", [
+                      ? _c("p", { class: _vm.statusColor(category.status) }, [
                           _vm._v(
-                            "\n\t\t\t\t\t\t\t       Pause\n\t\t\t\t\t\t\t   "
+                            "\n\t\t\t\t\t\t\t       Active\n\t\t\t\t\t\t\t   "
                           ),
                         ])
                       : category.status == 0
-                      ? _c("p", [
+                      ? _c("p", { class: _vm.statusColor(category.status) }, [
                           _vm._v(
-                            "\n\t\t\t\t\t\t\t       Active\n\t\t\t\t\t\t\t   "
+                            "\n\t\t\t\t\t\t\t       Pause\n\t\t\t\t\t\t\t   "
                           ),
                         ])
                       : _vm._e(),
                   ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(" Edit / Delete")]),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger btn-sm",
+                        attrs: { type: "button" },
+                      },
+                      [_vm._v("Edit")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.removeStatus(category.id)
+                          },
+                        },
+                      },
+                      [_vm._v("Delete")]
+                    ),
+                  ]),
                 ])
               }),
               0
@@ -43472,7 +43523,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
+        _c("th", [_vm._v("SL No.")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Slug")]),
         _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
