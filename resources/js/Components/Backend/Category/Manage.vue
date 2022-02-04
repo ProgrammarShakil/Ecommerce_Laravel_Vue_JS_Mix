@@ -83,13 +83,42 @@ export default {
 		},
 
 		removeStatus(id){
-			axios.get("remove-category/" + id).then( (response) => {
-                toastr.success("Category Deleted Successfully");
-				this.$store.dispatch('getCategories'); // after delete fetch data
+			swal.fire({
+				title: 'Are you sure?',
+				text: "You won't be able to revert this!",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonText: 'Yes, delete it!',
+				cancelButtonText: 'No, cancel!',
+				reverseButtons: true
+				}).then((result) => {
+					
+				if (result.isConfirmed) {
+					// swal.fire(
+					// 'Deleted!',
+					// 'Your file has been deleted.',
+					// 'success'
+					// )
+					axios.get("remove-category/" + id).then( (response) => {
+						toastr.success("Category Deleted Successfully");
+						this.$store.dispatch('getCategories'); // after delete fetch data
 
-            }).catch( (error) => {
-                console.log(error);
-            })
+					}).catch( (error) => {
+						console.log(error);
+					})
+
+				} else if (
+					/* Read more about handling dismissals below */
+					result.dismiss === Swal.DismissReason.cancel
+				) {
+					swal.fire(
+					'Cancelled',
+					'Your imaginary file is safe :)',
+					'error'
+					)
+				}
+			})
+			
 		},
 
 		ifDidntGetData(){

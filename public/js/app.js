@@ -7968,13 +7968,34 @@ __webpack_require__.r(__webpack_exports__);
     removeStatus: function removeStatus(id) {
       var _this = this;
 
-      axios.get("remove-category/" + id).then(function (response) {
-        toastr.success("Category Deleted Successfully");
+      swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          // swal.fire(
+          // 'Deleted!',
+          // 'Your file has been deleted.',
+          // 'success'
+          // )
+          axios.get("remove-category/" + id).then(function (response) {
+            toastr.success("Category Deleted Successfully");
 
-        _this.$store.dispatch('getCategories'); // after delete fetch data
+            _this.$store.dispatch('getCategories'); // after delete fetch data
 
-      })["catch"](function (error) {
-        console.log(error);
+          })["catch"](function (error) {
+            console.log(error);
+          });
+        } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel) {
+          swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
+        }
       });
     },
     ifDidntGetData: function ifDidntGetData() {
@@ -8064,18 +8085,8 @@ window.toastr = (toastr__WEBPACK_IMPORTED_MODULE_4___default());
 
 
 window.Swal = (sweetalert2__WEBPACK_IMPORTED_MODULE_6___default());
-var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_6___default().mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: function didOpen(toast) {
-    toast.addEventListener('mouseenter', (sweetalert2__WEBPACK_IMPORTED_MODULE_6___default().stopTimer));
-    toast.addEventListener('mouseleave', (sweetalert2__WEBPACK_IMPORTED_MODULE_6___default().resumeTimer));
-  }
-});
-window.Toast = Toast; // Vue Component Register
+var swal = sweetalert2__WEBPACK_IMPORTED_MODULE_6___default().mixin({});
+window.swal = swal; // Vue Component Register
 
 Vue.component('Home', (__webpack_require__(/*! ./Components/Backend/Category/Home.vue */ "./resources/js/Components/Backend/Category/Home.vue")["default"]));
 var app = new Vue({
