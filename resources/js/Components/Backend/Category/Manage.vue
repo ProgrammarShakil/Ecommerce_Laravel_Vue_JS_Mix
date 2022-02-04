@@ -79,7 +79,7 @@ export default {
 
 		removeStatus(id){
 			axios.get("remove-category/" + id).then( (response) => {
-                toastr.success(response.data);
+                toastr.success("Category Deleted Successfully");
 
             }).catch( (error) => {
                 console.log(error);
