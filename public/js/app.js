@@ -7861,11 +7861,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.form.post('/add-category').then(function () {
-        // toastr.success('Category Added Successfully');
-        Toast.fire({
-          icon: 'success',
-          title: 'Category Added Successfully'
-        });
+        toastr.success('Category Added Successfully'); // Toast.fire({icon: 'success', title: 'Category Added Successfully'})
+
         _this.form.name = null;
       });
     }
