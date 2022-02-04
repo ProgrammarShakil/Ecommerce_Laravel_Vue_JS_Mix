@@ -7957,8 +7957,12 @@ __webpack_require__.r(__webpack_exports__);
       return data[status]; // return 0 or 1
     },
     removeStatus: function removeStatus(id) {
+      var _this = this;
+
       axios.get("remove-category/" + id).then(function (response) {
         toastr.success("Category Deleted Successfully");
+
+        _this.$store.dispatch('getCategories');
       })["catch"](function (error) {
         console.log(error);
       });

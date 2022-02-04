@@ -80,6 +80,7 @@ export default {
 		removeStatus(id){
 			axios.get("remove-category/" + id).then( (response) => {
                 toastr.success("Category Deleted Successfully");
+				this.$store.dispatch('getCategories'); // after delete fetch data
 
             }).catch( (error) => {
                 console.log(error);
