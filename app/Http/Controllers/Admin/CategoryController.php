@@ -47,7 +47,7 @@ class CategoryController extends Controller
 
         Category::create([
             'name'   => $request->name,
-            'slug'   => $request->name,
+            'slug'   => strtolower(str_replace(' ','-', $request->name)) ,
             'status'   => $request->status,
         ]);
     }
