@@ -7934,6 +7934,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: new Form({
+        id: null,
         name: null,
         status: null
       })
@@ -7943,19 +7944,21 @@ __webpack_require__.r(__webpack_exports__);
     this.getCategory();
   },
   methods: {
-    // addCategory() {
-    // 	this.form.post('/add-category').then(() => {
-    // 		toastr.success('Category Added Successfully');
-    // 		// Toast.fire({icon: 'success', title: 'Category Added Successfully'})
-    // 		this.form.name = null
-    // 	})
-    // },
-    getCategory: function getCategory() {
+    UpdateCategory: function UpdateCategory() {
       var _this = this;
+
+      this.form.post('update-category/').then(function (response) {
+        toastr.success('Category Updated Successfully.');
+
+        _this.$router.push('/categories');
+      });
+    },
+    getCategory: function getCategory() {
+      var _this2 = this;
 
       axios.get('show-category/' + this.$route.params.slug).then(function (response) {
         // console.log(response.data.category);
-        _this.form.fill(response.data.category);
+        _this2.form.fill(response.data.category);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -68300,7 +68303,7 @@ var render = function () {
               on: {
                 submit: function ($event) {
                   $event.preventDefault()
-                  return _vm.addCategory.apply(null, arguments)
+                  return _vm.UpdateCategory.apply(null, arguments)
                 },
               },
             },

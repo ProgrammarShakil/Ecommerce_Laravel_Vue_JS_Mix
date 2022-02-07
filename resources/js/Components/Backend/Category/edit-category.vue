@@ -13,7 +13,7 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<form action="" @submit.prevent="addCategory">
+					<form action="" @submit.prevent="UpdateCategory">
 						<div class="mb-3">
 							<label for="add-cat" class="form-label"></label>
 							<input type="text" class="form-control" v-model="form.name" id="add-cat" name="add-cat">
@@ -33,7 +33,7 @@
 					   <div class="row mt-3">
 							<div class="col-6">
 								<button type="submit" :disabled="form.busy" class="btn btn-primary btn-sm"> Update </button>
-							</div>
+							</div> 
 							<div class="col-6 text-end">
 								<button type="reset"  class="btn btn-danger btn-sm"> Cancel </button>
 							</div>
@@ -53,6 +53,7 @@ export default {
 	data(){
 		return{
 			form: new Form({
+				id: null,
 				name: null,
 				status: null
 			})
@@ -63,18 +64,12 @@ export default {
 	},
 
 	methods:{
-
-		// addCategory() {
-
-		// 	this.form.post('/add-category').then(() => {
-
-		// 		toastr.success('Category Added Successfully');
-		// 		// Toast.fire({icon: 'success', title: 'Category Added Successfully'})
-
-		// 		this.form.name = null
-
-		// 	})
-		// },
+		UpdateCategory(){
+			this.form.post('update-category/').then( (response) => {
+				toastr.success('Category Updated Successfully.');
+				this.$router.push('/categories');
+			})
+		},
 		getCategory(){
 			axios.get('show-category/' + this.$route.params.slug).then( (response) => {
 				// console.log(response.data.category);

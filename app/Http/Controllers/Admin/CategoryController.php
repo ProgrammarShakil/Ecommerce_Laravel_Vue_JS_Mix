@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use GrahamCampbell\ResultType\Result;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 
 class CategoryController extends Controller
 {
@@ -81,9 +83,26 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name'   => 'required',
+            'status' => 'required',
+        ]);
+
+        $category = Category::find($request->id);
+
+        $category->name    = $request->name;
+        $category->slug    = strtolower(str_replace(' ','-', $request->name)) ;
+        $category->status  = $request->status;
+        // $category->save();
+
+        if($category->save()){
+            $success = true;
+        }else{
+            $success = false;
+        }
+        return response()->json(['success' => $success],200);
     }
 
     /**
