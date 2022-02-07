@@ -17,9 +17,7 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 
-        return response()->json([
-            'categories' => $categories,
-        ], 200) ;
+        return response()->json(['categories' => $categories], 200) ;
     }
 
     /**
@@ -58,9 +56,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $category = Category::where('slug', $slug)->first();
+
+        return response()->json(['category' => $category], 200);
     }
 
     /**
@@ -92,9 +92,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        $category_id = Category::find($id);
-        $category_id->delete();
+        $category_id = Category::where('slug', $slug)->first();
+
+       if( $category_id->delete()){
+            $success = true;
+        }else{
+            $success = false;
+       }
+       return response()->json(['success' => $success], 200);
     }
 }

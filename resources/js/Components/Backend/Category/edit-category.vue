@@ -6,7 +6,6 @@
 					<div class="row">
 						<div class="col-6">
 							<h4 class="card-title pt-2"> Update Category</h4>
-							{{this.$route.params.id}}
 						</div>
 						<div class="col-6 text-end">
 							<router-link to="/categories" class="btn btn-success btn-sm text-end"> Back </router-link>
@@ -17,7 +16,7 @@
 					<form action="" @submit.prevent="addCategory">
 						<div class="mb-3">
 							<label for="add-cat" class="form-label"></label>
-							<input type="text" class="form-control" v-model="form.name" id="add-cat" placeholder="" name="add-cat">
+							<input type="text" class="form-control" v-model="form.name" id="add-cat" name="add-cat">
 							<HasError :form="form" field="name" />
 						</div>
 						<div class="clearfix">
@@ -49,29 +48,39 @@
 <script>
 export default {
 
-	name: "create-category",
+	name: "edit-category",
 
 	data(){
 		return{
 			form: new Form({
-				name: '',
-				status: 1,
-				busy: false
+				name: null,
+				status: null
 			})
 		}
+	},
+	mounted() {
+		this.getCategory()
 	},
 
 	methods:{
 
-		addCategory() {
+		// addCategory() {
 
-			this.form.post('/add-category').then(() => {
+		// 	this.form.post('/add-category').then(() => {
 
-				toastr.success('Category Added Successfully');
-				// Toast.fire({icon: 'success', title: 'Category Added Successfully'})
+		// 		toastr.success('Category Added Successfully');
+		// 		// Toast.fire({icon: 'success', title: 'Category Added Successfully'})
 
-				this.form.name = null
+		// 		this.form.name = null
 
+		// 	})
+		// },
+		getCategory(){
+			axios.get('show-category/' + this.$route.params.slug).then( (response) => {
+				// console.log(response.data.category);
+				this.form.fill(response.data.category);
+			}).catch( (error) => {
+				console.log(error);
 			})
 		}
 	}
